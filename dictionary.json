@@ -609,8 +609,8 @@
     "Multiple lung metastasis, scatter all lobes both lungs": "Multiple solid pulmonary nodules scattered in all lobes of both lungs (size up to $ cm), likely pulmonary metastasis.",
     "Multiple lung metastasis, progress": "Increased size and number of multiple solid pulmonary nodules scattered in all lobes of both lungs (now size up to $ cm), likely pulmonary metastasis.",
     "Multiple lung metastasis, improved": "Decreased size and number of multiple solid pulmonary nodules scattered in all lobes of both lungs (now size up to $ cm), likely pulmonary metastasis.",
-    "Stable solid, since.., benign nature": "Stable a few/several/multiple small solid pulmonary nodules (size up to $ cm) in the $ since $, likely benign in nature."
-    "$":"$."},
+    "Stable solid, since.., benign nature": "Stable a few/several/multiple small solid pulmonary nodules (size up to $ cm) in the $ since $, likely benign in nature.",
+    "$": "$."},
 
   "cad_rad": ["CAD-RADS-0 (No plaque or stenosis)",
     "CAD-RADS 1 (1-24% stenosis)",
