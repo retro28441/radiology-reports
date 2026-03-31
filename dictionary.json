@@ -120,7 +120,7 @@
     "Marked hepatomegaly": "Marked hepatomegaly with normal parenchymal attenuation.",
     "Post hepatectomy": "Evidence of right/left$ lobe hepatectomy with unremarkable surgical bed.",
     "Post limited resection": "Evidence of limited resection of hepatic segment $ with unremarkable surgical bed.",
-    "$", "---"},
+    "$": "$", "---": "---"},
 
   "liver_lesion":{"---": "---",
     "Hypodense lesion*1": "A $-cm hypodense lesion at $, probably $.",
@@ -1203,5 +1203,10 @@
   "imp_us_gb": ["", "A $-cm gallstone without evidence of acute cholecystitis.", "A few gallstones (up to $ cm) without evidence of acute cholecystitis.", "Several gallstones (up to $ cm) without evidence of acute cholecystitis.", "Multiple gallstones (up to $ cm) without evidence of acute cholecystitis.", "Multiple small gallstones/sandstones without evidence of acute cholecystitis.", "Post cholecystectomy."],
   "imp_kid": ["", "Mild parenchymatous disease of both kidneys.", "Mild parenchymatous disease of $ kidney.","Parenchymatous disease of both kidneys.", "Parenchymatous disease of $ kidney.", "Chronic parenchymatous disease of both kidneys.", "Chronic parenchymatous disease of $ kidney.", "Post $ nephrectomy with unremarkable renal fossa."],
   "diaphr_paraly": ["", "Suggestive of right hemidiaphragmatic paralysis.", "Suggestive of left hemidiaphragmatic paralysis.", "Suggestive of bilateral hemidiaphragmatic paralysis.", "Suggestive of severe right hemidiaphragmatic weakness.", "Suggestive of severe left hemidiaphragmatic weakness.", "Probably mild right hemidiaphragmatic weakness.", "Probably mild left hemidiaphragmatic weakness.", "Probably mild bilateral hemidiaphragmatic weakness.", "Likely right hemidiaphragmatic eventration.", "Likely left hemidiaphragmatic eventration.", "$."],
-  "diaphr_no": ["Normal orthograde excursion and thickness of the bilateral hemidiaphragms.", "Normal orthograde excursion and thickness of the right hemidiaphragm.", "Normal orthograde excursion and thickness of the left hemidiaphragm.", "No evidence of diaphragmatic paralysis.", "$."]
+
+  "diaphr_no": ["Normal orthograde excursion and thickness of the bilateral hemidiaphragms.",
+    "Normal orthograde excursion and thickness of the right hemidiaphragm.",
+    "Normal orthograde excursion and thickness of the left hemidiaphragm.",
+    "No evidence of diaphragmatic paralysis.",
+    "$."]
 }
