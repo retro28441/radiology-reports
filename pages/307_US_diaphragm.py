@@ -143,15 +143,23 @@ with col2:
     
     report_text += f"\nIMPRESSION:\n- {diaphr_paraly}\n- {diaphr_no}\n- {imp_free}"
 
-    # 1. Create the memory slot (I named it 'diaphragm_memory' for this specific page)
+    # 1. Initialize the memory banks
     if 'diaphragm_memory' not in st.session_state:
-        st.session_state.diaphragm_memory = report_text 
+        st.session_state.diaphragm_memory = report_text
+    if 'last_template' not in st.session_state:
+        st.session_state.last_template = report_text
 
-    # 2. Create the save function
+    # 2. THE FIX: If the left side changes, push the new words to the memory box!
+    if report_text != st.session_state.last_template:
+        st.session_state.diaphragm_memory = report_text
+        st.session_state.last_template = report_text
+
+    # 3. Create the save function for manual typing
     def save_typing():
         st.session_state.diaphragm_memory = st.session_state.live_diaphragm_box
+        st.session_state.last_template = report_text # Keep the traffic cop updated
 
-    # 3. Create the auto-saving text area
+    # 4. Create the auto-saving text area
     st.text_area(
         "Edit and copy your report here:", 
         value=st.session_state.diaphragm_memory, 
