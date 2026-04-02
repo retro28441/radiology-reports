@@ -143,4 +143,19 @@ with col2:
     
     report_text += f"\nIMPRESSION:\n- {diaphr_paraly}\n- {diaphr_no}\n- {imp_free}"
 
-    st.text_area("Edit and copy your report here:", value=report_text, height=900)
+    # 1. Create the memory slot (I named it 'diaphragm_memory' for this specific page)
+    if 'diaphragm_memory' not in st.session_state:
+        st.session_state.diaphragm_memory = report_text 
+
+    # 2. Create the save function
+    def save_typing():
+        st.session_state.diaphragm_memory = st.session_state.live_diaphragm_box
+
+    # 3. Create the auto-saving text area
+    st.text_area(
+        "Edit and copy your report here:", 
+        value=st.session_state.diaphragm_memory, 
+        key="live_diaphragm_box", 
+        on_change=save_typing, 
+        height=900
+    )
