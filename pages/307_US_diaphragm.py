@@ -143,27 +143,22 @@ with col2:
     
     report_text += f"\nIMPRESSION:\n- {diaphr_paraly}\n- {diaphr_no}\n- {imp_free}"
 
-    # 1. Initialize the memory banks
-    if 'diaphragm_memory' not in st.session_state:
-        st.session_state.diaphragm_memory = report_text
+   # 1. Setup the tracker for the left side
     if 'last_template' not in st.session_state:
         st.session_state.last_template = report_text
 
-    # 2. THE FIX: If the left side changes, push the new words to the memory box!
+    # 2. Setup the memory for the text box
+    if 'live_diaphragm_box' not in st.session_state:
+        st.session_state.live_diaphragm_box = report_text
+
+    # 3. The Traffic Cop: If the left side changes, push it to the right side instantly
     if report_text != st.session_state.last_template:
-        st.session_state.diaphragm_memory = report_text
+        st.session_state.live_diaphragm_box = report_text
         st.session_state.last_template = report_text
 
-    # 3. Create the save function for manual typing
-    def save_typing():
-        st.session_state.diaphragm_memory = st.session_state.live_diaphragm_box
-        st.session_state.last_template = report_text # Keep the traffic cop updated
-
-    # 4. Create the auto-saving text area
+    # 4. Display the text area (Notice we deleted 'value=' and 'on_change=')
     st.text_area(
         "Edit and copy your report here:", 
-        value=st.session_state.diaphragm_memory, 
         key="live_diaphragm_box", 
-        on_change=save_typing, 
         height=900
     )
