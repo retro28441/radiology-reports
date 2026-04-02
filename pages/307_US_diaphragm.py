@@ -143,36 +143,4 @@ with col2:
     
     report_text += f"\nIMPRESSION:\n- {diaphr_paraly}\n- {diaphr_no}\n- {imp_free}"
 
-    # 1. Did the user just return to this page? (Check if Streamlit deleted the box)
-    is_page_return = 'live_diaphragm_box' not in st.session_state
-
-    # 2. Create the Permanent Safe to store their manual typing
-    if 'diaphragm_safe_backup' not in st.session_state:
-        st.session_state.diaphragm_safe_backup = report_text
-
-    # 3. If they just returned from another page, restore the text from the Safe!
-    if is_page_return:
-        st.session_state.live_diaphragm_box = st.session_state.diaphragm_safe_backup
-        st.session_state.diaphragm_last_template = report_text
-
-    # 4. Set up the Traffic Cop for the left side
-    if 'diaphragm_last_template' not in st.session_state:
-        st.session_state.diaphragm_last_template = report_text
-
-    # 5. Traffic Cop: If they ACTIVELY change a left-side dropdown, update the box
-    if not is_page_return and report_text != st.session_state.diaphragm_last_template:
-        st.session_state.live_diaphragm_box = report_text
-        st.session_state.diaphragm_last_template = report_text
-
-    # 6. Save Function: Every time they type, instantly lock it in the Safe
-    def save_diaphragm_typing():
-        st.session_state.diaphragm_safe_backup = st.session_state.live_diaphragm_box
-        st.session_state.diaphragm_last_template = report_text # Keep the cop updated
-
-    # 7. The Text Box
-    st.text_area(
-        "Edit and copy your report here:", 
-        key="live_diaphragm_box", 
-        on_change=save_diaphragm_typing, 
-        height=900
-    )
+    st.text_area("Edit and copy your report here:", value=report_text, height=900)
