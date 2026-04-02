@@ -143,10 +143,17 @@ with col2:
         st.session_state.us_lower_abd_safe_backup = st.session_state.live_us_lower_abd_box
         st.session_state.us_lower_abd_last_template = report_text 
 
-    # 7. The Text Box
+   # 7. The Text Box
     st.text_area(
-        "Edit and copy your report here:", 
-        key="live_us_lower_abd_box", 
-        on_change=save_us_lower_abd_typing, 
+        "Edit and copy your report here:",
+        key="live_us_lower_abd_box",
+        on_change=save_us_lower_abd_typing,
         height=900
     )
+
+    # --- ADD THIS SAFETY NET BELOW THE TEXT BOX ---
+    
+    st.caption("⚠️ **CRITICAL:** You MUST click outside the text box or click the save button below before switching modalities, or your typing will be lost!")
+    
+    if st.button("💾 Save Text Progress"):
+        st.success("Report saved safely to memory! You can now switch pages.")
