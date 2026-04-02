@@ -117,4 +117,36 @@ with col2:
     
     report_text += f"\nIMPRESSION:\n- {imp_free}\n- "
 
-    st.text_area("Edit and copy your report here:", value=report_text, height=900)
+    # 1. Did the user just return to this page?
+    is_page_return = 'live_us_lower_abd_box' not in st.session_state
+
+    # 2. Create the Permanent Safe
+    if 'us_lower_abd_safe_backup' not in st.session_state:
+        st.session_state.us_lower_abd_safe_backup = report_text
+
+    # 3. Restore the text from the Safe!
+    if is_page_return:
+        st.session_state.live_us_lower_abd_box = st.session_state.us_lower_abd_safe_backup
+        st.session_state.us_lower_abd_last_template = report_text
+
+    # 4. Set up the Traffic Cop
+    if 'us_lower_abd_last_template' not in st.session_state:
+        st.session_state.us_lower_abd_last_template = report_text
+
+    # 5. Traffic Cop
+    if not is_page_return and report_text != st.session_state.us_lower_abd_last_template:
+        st.session_state.live_us_lower_abd_box = report_text
+        st.session_state.us_lower_abd_last_template = report_text
+
+    # 6. Save Function
+    def save_us_lower_abd_typing():
+        st.session_state.us_lower_abd_safe_backup = st.session_state.live_us_lower_abd_box
+        st.session_state.us_lower_abd_last_template = report_text 
+
+    # 7. The Text Box
+    st.text_area(
+        "Edit and copy your report here:", 
+        key="live_us_lower_abd_box", 
+        on_change=save_us_lower_abd_typing, 
+        height=900
+    )
